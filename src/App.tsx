@@ -1,6 +1,7 @@
 import { Box, CssBaseline } from "@mui/material";
 import "./App.css";
 import Header from "./components/header/Header";
+import Main from "./components/main/Main";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <CssBaseline />
       <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
         <Header />
+        <Main />
       </Box>
     </>
   );

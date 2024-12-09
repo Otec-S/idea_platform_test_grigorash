@@ -1,0 +1,44 @@
+.cardInfoWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 50%;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.time {
+  font-size: xx-large;
+}
+
+.airport {
+  /* style definitions */
+}
+
+.date {
+  opacity: 0.5;
+}
+
+.stops {
+  width: 50%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.arrow {
+  font-size: 5rem;
+  opacity: 0.5;
+}
+
+.button {
+  width: 100%;
+}
