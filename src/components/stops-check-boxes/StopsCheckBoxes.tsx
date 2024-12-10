@@ -6,8 +6,27 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useState } from "react";
 
+// TODO: вынести?
+type State = {
+  [key: string]: boolean;
+  "0-stops": boolean;
+  "1-stop": boolean;
+  "2-stops": boolean;
+  "3-stops": boolean;
+  "all-flights": boolean;
+};
+
+// TODO: вынести?
+const options = [
+  { label: "Без пересадок", name: "0-stops" },
+  { label: "1 пересадка", name: "1-stop" },
+  { label: "2 пересадки", name: "2-stops" },
+  { label: "3 пересадки", name: "3-stops" },
+  { label: "Все рейсы", name: "all-flights" },
+];
+
 export default function StopsCheckBoxes() {
-  const [state, setState] = useState({
+  const [state, setState] = useState<State>({
     "0-stops": false,
     "1-stop": false,
     "2-stops": false,
@@ -16,79 +35,32 @@ export default function StopsCheckBoxes() {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState({
-      ...state,
+    setState((prevState) => ({
+      ...prevState,
       [event.target.name]: event.target.checked,
-    });
+    }));
   };
-
-  // const { 0, 1, 2, 3 } = state;
-  // const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
 
   return (
     <Box sx={{ display: "flex" }}>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
         <FormLabel component="legend">Количество пересадок</FormLabel>
         <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state["0-stops"]}
-                onChange={handleChange}
-                name="0-stops"
-              />
-            }
-            label="Без пересадок"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state["1-stop"]}
-                onChange={handleChange}
-                name="1-stop"
-              />
-            }
-            label="1 пересадка"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state["2-stops"]}
-                onChange={handleChange}
-                name="2-stops"
-              />
-            }
-            label="2 пересадки"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state["3-stops"]}
-                onChange={handleChange}
-                name="3-stops"
-              />
-            }
-            label="3 пересадки"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={state["all-flights"]}
-                onChange={handleChange}
-                name="all-flights"
-              />
-            }
-            label="Все рейсы"
-          />
+          {options.map((option) => (
+            <FormControlLabel
+              key={option.name}
+              control={
+                <Checkbox
+                  checked={state[option.name]}
+                  onChange={handleChange}
+                  name={option.name}
+                />
+              }
+              label={option.label}
+            />
+          ))}
         </FormGroup>
       </FormControl>
-      {/* <FormControl
-        required
-        error={error}
-        component="fieldset"
-        sx={{ m: 3 }}
-        variant="standard"
-      > */}
     </Box>
   );
 }
