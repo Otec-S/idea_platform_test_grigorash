@@ -7,7 +7,7 @@ interface State {
   "1-stop": boolean;
   "2-stops": boolean;
   "3-stops": boolean;
-  "all-flights": boolean;
+  // "all-flights": boolean;
 }
 
 interface Props {
@@ -22,11 +22,11 @@ export const StopsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [state, setState] = useState<State>({
-    "0-stops": false,
-    "1-stop": false,
-    "2-stops": false,
-    "3-stops": false,
-    "all-flights": false,
+    "0-stops": true,
+    "1-stop": true,
+    "2-stops": true,
+    "3-stops": true,
+    // "all-flights": true,
   });
 
   return (
