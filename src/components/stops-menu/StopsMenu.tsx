@@ -19,7 +19,6 @@ const options = [
   { label: "1 пересадка", name: "1-stop" },
   { label: "2 пересадки", name: "2-stops" },
   { label: "3 пересадки", name: "3-stops" },
-  // { label: "Все рейсы", name: "all-flights" },
 ];
 
 export default function StopsMenu({ open, toggleDrawer }: Props) {

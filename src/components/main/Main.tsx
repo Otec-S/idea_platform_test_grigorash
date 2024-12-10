@@ -6,13 +6,12 @@ import styles from "./Main.module.css";
 import { useStops } from "../../shared/hooks/useStops";
 
 export default function Main() {
-  const { state } = useStops(); // Получение состояния из контекста
+  const { state } = useStops();
   const [flights, setFlights] = useState<IFlight[]>([]);
 
   useEffect(() => {
-    // Фильтрация данных рейсов на основе состояния чекбоксов
     const filteredFlights = ticketsData.tickets.filter((ticket) => {
-      const stopsCount = ticket.stops; // Предполагая, что у вас есть поле "stops" в данных тикета
+      const stopsCount = ticket.stops;
       switch (stopsCount) {
         case 0:
           return state["0-stops"];
@@ -23,12 +22,12 @@ export default function Main() {
         case 3:
           return state["3-stops"];
         default:
-          return state["all-flights"];
+          return null;
       }
     });
 
     setFlights(filteredFlights);
-  }, [state]); // Обновляем список рейсов при изменении состояния чекбоксов
+  }, [state]);
 
   return (
     <div className={styles.container}>
