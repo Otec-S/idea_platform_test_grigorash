@@ -7,7 +7,7 @@ export interface IFlight {
   departure_time: string;
   arrival_date: string;
   arrival_time: string;
-  carrier: "S7" | "TK" | "BA" | "SU";
-  stops: 0 | 1 | 2 | 3;
+  carrier: string;
+  stops: number;
   price: number;
 }

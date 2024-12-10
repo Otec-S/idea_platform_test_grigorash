@@ -4,8 +4,12 @@
   justify-content: space-between;
 }
 
+.logoWrapper {
+  height: 5rem;
+}
+
 .logo {
-  height: 50%;
+  width: 50%;
 }
 
 .cardInfo {
@@ -27,11 +31,12 @@
 }
 
 .stops {
-  width: 50%;
+  width: 30%;
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  opacity: 0.5;
 }
 
 .arrow {

@@ -46,13 +46,15 @@ const FlightCard: FC<IFlight> = ({
   const stopsText = stopsNumber[stops];
 
   return (
-    <Card sx={{ maxWidth: 600, padding: 2 }}>
+    <Card sx={{ width: 500, padding: 3 }}>
       {logoSrc && (
-        <img
-          src={logoSrc}
-          alt={`Логотип авиакомпании ${carrier}`}
-          className={styles.logo}
-        />
+        <div className={styles.logoWrapper}>
+          <img
+            src={logoSrc}
+            alt={`Логотип авиакомпании ${carrier}`}
+            className={styles.logo}
+          />
+        </div>
       )}
       <CardContent>
         <div className={styles.cardInfoWrapper}>
