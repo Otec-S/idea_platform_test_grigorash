@@ -22,6 +22,13 @@ const carrierLogos: { [key: string]: string } = {
   TK: TKImage,
 };
 
+const stopsNumber: { [key: number]: string } = {
+  0: "Прямой рейс",
+  1: "1 пересадка",
+  2: "2 пересадки",
+  3: "3 пересадки",
+};
+
 const FlightCard: FC<IFlight> = ({
   origin,
   origin_name,
@@ -36,6 +43,7 @@ const FlightCard: FC<IFlight> = ({
   price,
 }) => {
   const logoSrc = carrier ? carrierLogos[carrier] : null;
+  const stopsText = stopsNumber[stops];
 
   return (
     <Card sx={{ maxWidth: 600, padding: 2 }}>
@@ -57,7 +65,7 @@ const FlightCard: FC<IFlight> = ({
           </div>
           <div className={styles.stops}>
             <FlightLandIcon />
-            <div>{stops} пересад.</div>
+            <div>{stopsText}</div>
             <FlightTakeoffIcon />
           </div>
 
