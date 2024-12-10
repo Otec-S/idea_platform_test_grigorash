@@ -7,24 +7,13 @@ import {
   FormLabel,
 } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
-import { useState } from "react";
+import { useStops } from "../../shared/hooks/useStops";
 
 interface Props {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => () => void;
 }
 
-// TODO: вынести?
-type State = {
-  [key: string]: boolean;
-  "0-stops": boolean;
-  "1-stop": boolean;
-  "2-stops": boolean;
-  "3-stops": boolean;
-  "all-flights": boolean;
-};
-
-// TODO: вынести?
 const options = [
   { label: "Без пересадок", name: "0-stops" },
   { label: "1 пересадка", name: "1-stop" },
@@ -34,13 +23,7 @@ const options = [
 ];
 
 export default function StopsMenu({ open, toggleDrawer }: Props) {
-  const [state, setState] = useState<State>({
-    "0-stops": false,
-    "1-stop": false,
-    "2-stops": false,
-    "3-stops": false,
-    "all-flights": false,
-  });
+  const { state, setState } = useStops();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState((prevState) => ({
