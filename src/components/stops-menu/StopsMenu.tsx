@@ -8,18 +8,12 @@ import {
 } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import { useStops } from "../../shared/hooks/useStops";
+import { FLIGHT_OPTIONS } from "../../shared/constants";
 
 interface Props {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => () => void;
 }
-
-const options = [
-  { label: "Без пересадок", name: "0-stops" },
-  { label: "1 пересадка", name: "1-stop" },
-  { label: "2 пересадки", name: "2-stops" },
-  { label: "3 пересадки", name: "3-stops" },
-];
 
 export default function StopsMenu({ open, toggleDrawer }: Props) {
   const { state, setState } = useStops();
@@ -38,7 +32,7 @@ export default function StopsMenu({ open, toggleDrawer }: Props) {
           <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
             <FormLabel component="legend">Количество пересадок</FormLabel>
             <FormGroup>
-              {options.map((option) => (
+              {FLIGHT_OPTIONS.map((option) => (
                 <FormControlLabel
                   key={option.name}
                   control={

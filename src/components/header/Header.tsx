@@ -99,13 +99,11 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              <MenuItem onClick={toggleCurrencyMenu(true)}>
-                <Typography sx={{ textAlign: "center" }}>Валюта</Typography>
-              </MenuItem>
-
-              {/* TODO: это маленькое меню*/}
               <MenuItem onClick={toggleStopsMenu(true)}>
                 <Typography sx={{ textAlign: "center" }}>Пересадки</Typography>
+              </MenuItem>
+              <MenuItem onClick={toggleCurrencyMenu(true)}>
+                <Typography sx={{ textAlign: "center" }}>Валюта</Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -132,37 +130,19 @@ function Header() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
-              onClick={toggleCurrencyMenu(true)}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              Валюта
-            </Button>
-            <Button
               onClick={toggleStopsMenu(true)}
               sx={{ my: 2, color: "white", display: "block" }}
             >
               Пересадки
             </Button>
-            {/* </Box>
-          <Box sx={{ flexGrow: 0 }}> */}
+            <Button
+              onClick={toggleCurrencyMenu(true)}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Валюта
+            </Button>
             {/* FIXME: поправь положение логотипа*/}
             <img src={ideaLogo} alt="Логотип Идея" width={40} height={40} />
-            {/* <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            ></Menu> */}
           </Box>
         </Toolbar>
       </Container>
