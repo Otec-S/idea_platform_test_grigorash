@@ -1,44 +1,82 @@
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-// import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import styles from "./FlightCard.module.css";
 
 import FlightLandIcon from "@mui/icons-material/FlightLand";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
 
-import s7 from "../../assets/s7.png";
+import S7Image from "../../assets/s7.png";
+import BAImage from "../../assets/BA.png";
+import SUImage from "../../assets/SU.png";
+import TKImage from "../../assets/TK.png";
 
-export default function FlightCard() {
+import { FC } from "react";
+import { IFlight } from "../../shared/types";
+
+const carrierLogos: { [key: string]: string } = {
+  S7: S7Image,
+  BA: BAImage,
+  SU: SUImage,
+  TK: TKImage,
+};
+
+const FlightCard: FC<IFlight> = ({
+  origin,
+  origin_name,
+  destination,
+  destination_name,
+  departure_date,
+  departure_time,
+  arrival_date,
+  arrival_time,
+  carrier,
+  stops,
+  price,
+}) => {
+  const logoSrc = carrier ? carrierLogos[carrier] : null;
+
   return (
     <Card sx={{ maxWidth: 600, padding: 2 }}>
-      <img src={s7} alt="Логотип авиакомпании" className={styles.logo} />
+      {logoSrc && (
+        <img
+          src={logoSrc}
+          alt={`Логотип авиакомпании ${carrier}`}
+          className={styles.logo}
+        />
+      )}
       <CardContent>
         <div className={styles.cardInfoWrapper}>
           <div className={styles.cardInfo}>
-            <div className={styles.time}>10:00</div>
-            <div className={styles.airport}>Moscow</div>
-            <div className={styles.date}>12.05.18</div>
+            <div className={styles.time}>{departure_time}</div>
+            <div className={styles.airport}>
+              {origin}, {origin_name}
+            </div>
+            <div className={styles.date}>{departure_date}</div>
           </div>
           <div className={styles.stops}>
             <FlightLandIcon />
-            <div>3 пересадки</div>
+            <div>{stops} пересад.</div>
             <FlightTakeoffIcon />
           </div>
 
           <div className={styles.cardInfo}>
-            <div className={styles.time}>12:00</div>
-            <div className={styles.airport}>Berlin</div>
-            <div className={styles.date}>12.05.18</div>
+            <div className={styles.time}>{arrival_time}</div>
+            <div className={styles.airport}>
+              {destination}, {destination_name}
+            </div>
+            <div className={styles.date}>{arrival_date}</div>
           </div>
         </div>
       </CardContent>
       <CardActions>
         <Button variant="contained" className={styles.button}>
-          Купить за 21500 руб.
+          Купить за {price} руб.
         </Button>
       </CardActions>
     </Card>
   );
-}
+};
+
+export default FlightCard;
