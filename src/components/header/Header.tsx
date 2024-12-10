@@ -8,13 +8,18 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AirplaneTicketOutlinedIcon from "@mui/icons-material/AirplaneTicketOutlined";
 import ideaLogo from "../../assets/IdeaLogoNoBg.png";
+import StopsMenu from "../stops-menu/StopsMenu";
 
-const pages = ["Валюта", "Пересадки"];
+function Header() {
+  const [openStopsMenu, setOpenStopsMenu] = useState(false);
 
-function ResponsiveAppBar() {
+  const toggleStopsMenu = (newOpen: boolean) => () => {
+    setOpenStopsMenu(newOpen);
+  };
+
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -29,6 +34,12 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  useEffect(() => {
+    if (openStopsMenu) {
+      handleCloseNavMenu();
+    }
+  }, [openStopsMenu]);
 
   return (
     <AppBar position="static">
@@ -82,11 +93,14 @@ function ResponsiveAppBar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography sx={{ textAlign: "center" }}>Валюта</Typography>
+              </MenuItem>
+
+              {/* TODO: это маленькое меню*/}
+              <MenuItem onClick={toggleStopsMenu(true)}>
+                <Typography sx={{ textAlign: "center" }}>Пересадки</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <AirplaneTicketOutlinedIcon
@@ -111,15 +125,18 @@ function ResponsiveAppBar() {
             АВИАБИЛЕТЫ
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Валюта
+            </Button>
+            <Button
+              onClick={toggleStopsMenu(true)}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Пересадки
+            </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <img src={ideaLogo} alt="Логотип Идея" width={40} height={40} />
@@ -142,7 +159,8 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+      <StopsMenu open={openStopsMenu} toggleDrawer={toggleStopsMenu} />
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default Header;
