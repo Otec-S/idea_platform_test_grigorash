@@ -13,7 +13,7 @@ import AirplaneTicketOutlinedIcon from "@mui/icons-material/AirplaneTicketOutlin
 import ideaLogo from "../../assets/IdeaLogoNoBg.png";
 import StopsMenu from "../stops-menu/StopsMenu";
 import CurrencyMenu from "../currency-menu/CurrencyMenu";
-
+import styles from "./Header.module.css";
 function Header() {
   const [openStopsMenu, setOpenStopsMenu] = useState(false);
   const [openCurrencyMenu, setOpenCurrencyMenu] = useState(false);
@@ -128,21 +128,46 @@ function Header() {
           >
             АВИАБИЛЕТЫ
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
-              onClick={toggleStopsMenu(true)}
-              sx={{ my: 2, color: "white", display: "block" }}
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "none",
+                md: "flex",
+              },
+              justifyContent: "space-between",
+            }}
+          >
+            <Box sx={{ display: "flex" }}>
+              <Button
+                onClick={toggleStopsMenu(true)}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Пересадки
+              </Button>
+              <Button
+                onClick={toggleCurrencyMenu(true)}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Валюта
+              </Button>
+            </Box>
+            <a
+              className={styles.link}
+              href="https://ideaplatform.ru/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Idea Platform (opens in a new tab)"
             >
-              Пересадки
-            </Button>
-            <Button
-              onClick={toggleCurrencyMenu(true)}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              Валюта
-            </Button>
-            {/* FIXME: поправь положение логотипа*/}
-            <img src={ideaLogo} alt="Логотип Идея" width={40} height={40} />
+              Тестовое задание для
+              <img
+                src={ideaLogo}
+                alt="Логотип Идея"
+                width={50}
+                height={50}
+                className={styles.idea}
+              />
+            </a>
           </Box>
         </Toolbar>
       </Container>

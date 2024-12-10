@@ -1,0 +1,10 @@
+.link {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+.idea {
+  margin-left: 10px;
+}

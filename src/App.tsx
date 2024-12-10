@@ -8,7 +8,6 @@ function App() {
     <>
       <CssBaseline />
       <Box sx={{ bgcolor: "#cfe8fc" }}>
-        {/* <Box> */}
         <Header />
         <Main />
       </Box>
