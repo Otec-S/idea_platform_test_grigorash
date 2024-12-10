@@ -12,16 +12,22 @@ import { useEffect, useState } from "react";
 import AirplaneTicketOutlinedIcon from "@mui/icons-material/AirplaneTicketOutlined";
 import ideaLogo from "../../assets/IdeaLogoNoBg.png";
 import StopsMenu from "../stops-menu/StopsMenu";
+import CurrencyMenu from "../currency-menu/CurrencyMenu";
 
 function Header() {
   const [openStopsMenu, setOpenStopsMenu] = useState(false);
+  const [openCurrencyMenu, setOpenCurrencyMenu] = useState(false);
 
   const toggleStopsMenu = (newOpen: boolean) => () => {
     setOpenStopsMenu(newOpen);
   };
 
+  const toggleCurrencyMenu = (newOpen: boolean) => () => {
+    setOpenCurrencyMenu(newOpen);
+  };
+
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  // const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -31,15 +37,15 @@ function Header() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   useEffect(() => {
-    if (openStopsMenu) {
+    if (openStopsMenu || openCurrencyMenu) {
       handleCloseNavMenu();
     }
-  }, [openStopsMenu]);
+  }, [openStopsMenu, openCurrencyMenu]);
 
   return (
     <AppBar position="static">
@@ -93,7 +99,7 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
+              <MenuItem onClick={toggleCurrencyMenu(true)}>
                 <Typography sx={{ textAlign: "center" }}>Валюта</Typography>
               </MenuItem>
 
@@ -126,7 +132,7 @@ function Header() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
-              onClick={handleCloseNavMenu}
+              onClick={toggleCurrencyMenu(true)}
               sx={{ my: 2, color: "white", display: "block" }}
             >
               Валюта
@@ -137,10 +143,11 @@ function Header() {
             >
               Пересадки
             </Button>
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
+            {/* </Box>
+          <Box sx={{ flexGrow: 0 }}> */}
+            {/* FIXME: поправь положение логотипа*/}
             <img src={ideaLogo} alt="Логотип Идея" width={40} height={40} />
-            <Menu
+            {/* <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -155,11 +162,12 @@ function Header() {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-            ></Menu>
+            ></Menu> */}
           </Box>
         </Toolbar>
       </Container>
       <StopsMenu open={openStopsMenu} toggleDrawer={toggleStopsMenu} />
+      <CurrencyMenu open={openCurrencyMenu} toggleDrawer={toggleCurrencyMenu} />
     </AppBar>
   );
 }

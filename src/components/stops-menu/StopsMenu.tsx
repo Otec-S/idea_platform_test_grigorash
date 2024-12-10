@@ -32,27 +32,29 @@ export default function StopsMenu({ open, toggleDrawer }: Props) {
   };
 
   return (
-    <Drawer open={open} onClose={toggleDrawer(false)}>
-      <Box sx={{ display: "flex" }}>
-        <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-          <FormLabel component="legend">Количество пересадок</FormLabel>
-          <FormGroup>
-            {options.map((option) => (
-              <FormControlLabel
-                key={option.name}
-                control={
-                  <Checkbox
-                    checked={state[option.name]}
-                    onChange={handleChange}
-                    name={option.name}
-                  />
-                }
-                label={option.label}
-              />
-            ))}
-          </FormGroup>
-        </FormControl>
-      </Box>
-    </Drawer>
+    <>
+      <Drawer open={open} onClose={toggleDrawer(false)}>
+        <Box sx={{ display: "flex" }}>
+          <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+            <FormLabel component="legend">Количество пересадок</FormLabel>
+            <FormGroup>
+              {options.map((option) => (
+                <FormControlLabel
+                  key={option.name}
+                  control={
+                    <Checkbox
+                      checked={state[option.name]}
+                      onChange={handleChange}
+                      name={option.name}
+                    />
+                  }
+                  label={option.label}
+                />
+              ))}
+            </FormGroup>
+          </FormControl>
+        </Box>
+      </Drawer>
+    </>
   );
 }
