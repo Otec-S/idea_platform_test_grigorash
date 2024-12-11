@@ -42,12 +42,14 @@ export default function Main() {
   const convertPrice = (price: number) => {
     if (currency === "RUB") return price; // Если рубли, возвращаем без изменений
     if (!currencyRate) return price; // Если курс не получен, возвращаем цену без изменений
-    return price * currencyRate; // Конвертация цены в выбранной валюте
+    return Number((price / currencyRate).toFixed(2)); // Конвертация цены в выбранной валюте
   };
 
   if (currencyLoading) {
     return (
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", paddingTop: "150px" }}
+      >
         <CircularProgress />
       </Box>
     );

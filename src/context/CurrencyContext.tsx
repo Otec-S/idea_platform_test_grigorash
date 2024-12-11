@@ -1,17 +1,14 @@
-import React, { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, FC } from "react";
 
-interface CurrencyContextProps {
+interface Props {
   currency: string;
   setCurrency: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const CurrencyContext = createContext<CurrencyContextProps | undefined>(
-  undefined
-);
+export const CurrencyContext = createContext<Props | undefined>(undefined);
 
-export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const CurrencyProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  // FIXME:
   const [currency, setCurrency] = useState<string>("RUB");
 
   return (

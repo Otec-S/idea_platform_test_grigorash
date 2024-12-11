@@ -4,7 +4,6 @@ export const CURRENCY_OPTIONS = [
   { value: "RUB", label: "RUB" },
   { value: "USD", label: "USD" },
   { value: "EUR", label: "EUR" },
-  { value: "GBR", label: "GBR" },
   { value: "TRY", label: "TRY" },
 ];
 

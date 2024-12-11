@@ -8,13 +8,20 @@ import {
 } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import { CURRENCY_OPTIONS } from "../../shared/constants";
+import { useCurrency } from "../../shared/hooks/useCurrency";
 
 interface Props {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => () => void;
 }
 
-export default function StopsMenu({ open, toggleDrawer }: Props) {
+export default function CurrencyMenu({ open, toggleDrawer }: Props) {
+  const { currency, setCurrency } = useCurrency();
+
+  const handleCurrencyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrency(event.target.value);
+  };
+
   return (
     <>
       <Drawer open={open} anchor="right" onClose={toggleDrawer(false)}>
@@ -23,7 +30,9 @@ export default function StopsMenu({ open, toggleDrawer }: Props) {
             <FormLabel id="demo-radio-buttons-group-label">ВАЛЮТА</FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="RUB"
+              // defaultValue="RUB"
+              value={currency}
+              onChange={handleCurrencyChange}
               name="radio-buttons-group"
             >
               {CURRENCY_OPTIONS.map((option) => (

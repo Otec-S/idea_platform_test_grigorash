@@ -17,7 +17,6 @@ export function useCurrencyRate(currencyCode: string) {
       .then((data) => {
         const currencyRate =
           currencyCode === "RUB" ? 1 : data.Valute[currencyCode].Value;
-        console.log(currencyRate);
 
         setRate(currencyRate);
         setLoading(false);

@@ -14,6 +14,7 @@ import TKImage from "../../assets/TK.png";
 
 import { FC } from "react";
 import { IFlight } from "../../shared/types";
+import { useCurrency } from "../../shared/hooks/useCurrency";
 
 const carrierLogos: { [key: string]: string } = {
   S7: S7Image,
@@ -44,6 +45,7 @@ const FlightCard: FC<IFlight> = ({
 }) => {
   const logoSrc = carrier ? carrierLogos[carrier] : null;
   const stopsText = stopsNumber[stops];
+  const { currency } = useCurrency();
 
   return (
     <Card sx={{ width: 500, padding: 3 }}>
@@ -82,7 +84,7 @@ const FlightCard: FC<IFlight> = ({
       </CardContent>
       <CardActions>
         <Button variant="contained" className={styles.button}>
-          Купить за {price} руб.
+          Купить за {price} {currency}
         </Button>
       </CardActions>
     </Card>
