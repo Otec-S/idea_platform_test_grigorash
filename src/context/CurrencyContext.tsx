@@ -8,7 +8,6 @@ interface Props {
 export const CurrencyContext = createContext<Props | undefined>(undefined);
 
 export const CurrencyProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  // FIXME:
   const [currency, setCurrency] = useState<string>("RUB");
 
   return (

@@ -17,7 +17,6 @@ interface Props {
 
 export default function CurrencyMenu({ open, toggleDrawer }: Props) {
   const { currency, setCurrency } = useCurrency();
-
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrency(event.target.value);
   };
@@ -30,7 +29,6 @@ export default function CurrencyMenu({ open, toggleDrawer }: Props) {
             <FormLabel id="demo-radio-buttons-group-label">ВАЛЮТА</FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
-              // defaultValue="RUB"
               value={currency}
               onChange={handleCurrencyChange}
               name="radio-buttons-group"

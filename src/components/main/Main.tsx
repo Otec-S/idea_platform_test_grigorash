@@ -40,15 +40,20 @@ export default function Main() {
   }, [state]);
 
   const convertPrice = (price: number) => {
-    if (currency === "RUB") return price; // Если рубли, возвращаем без изменений
-    if (!currencyRate) return price; // Если курс не получен, возвращаем цену без изменений
-    return Number((price / currencyRate).toFixed(2)); // Конвертация цены в выбранной валюте
+    if (currency === "RUB") return price;
+    if (!currencyRate) return price;
+    return Number((price / currencyRate).toFixed(2));
   };
 
   if (currencyLoading) {
     return (
       <Box
-        sx={{ display: "flex", justifyContent: "center", paddingTop: "150px" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          paddingTop: "150px",
+          paddingBottom: "150px",
+        }}
       >
         <CircularProgress />
       </Box>

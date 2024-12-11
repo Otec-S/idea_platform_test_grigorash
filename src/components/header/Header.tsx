@@ -14,6 +14,7 @@ import ideaLogo from "../../assets/IdeaLogoNoBg.png";
 import StopsMenu from "../stops-menu/StopsMenu";
 import CurrencyMenu from "../currency-menu/CurrencyMenu";
 import styles from "./Header.module.css";
+
 function Header() {
   const [openStopsMenu, setOpenStopsMenu] = useState(false);
   const [openCurrencyMenu, setOpenCurrencyMenu] = useState(false);
@@ -27,7 +28,6 @@ function Header() {
   };
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  // const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -36,10 +36,6 @@ function Header() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
 
   useEffect(() => {
     if (openStopsMenu || openCurrencyMenu) {
@@ -55,7 +51,6 @@ function Header() {
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
           />
           <Typography
-            // className={styles.title}
             variant="h6"
             noWrap
             component="a"
@@ -112,7 +107,6 @@ function Header() {
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
           />
           <Typography
-            // className={styles.title}
             variant="h5"
             noWrap
             component="a"
@@ -160,12 +154,12 @@ function Header() {
               href="https://ideaplatform.ru/"
               target="_blank"
               rel="noreferrer noopener"
-              aria-label="Idea Platform (opens in a new tab)"
+              aria-label="Ссылка на сайт Идея Платформ (открывается в новой вкладке)"
             >
               Тестовое задание для
               <img
                 src={ideaLogo}
-                alt="Логотип Идея"
+                alt="Логотип Идея Платформ"
                 width={50}
                 height={50}
                 className={styles.idea}

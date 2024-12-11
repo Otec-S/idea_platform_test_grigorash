@@ -1,51 +1,66 @@
-# React + TypeScript + Vite
+# [Тестовое задание для компании "Idea Platform](https://otec-s.github.io/idea_platform_test_grigorash/)"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Функционал
 
-Currently, two official plugins are available:
+- **Карточки доступных полетов:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - Содержит необходимые поля, включая логотип авиа-компании, информация о вылете и прилете, кнопку Купить.
 
-## Expanding the ESLint configuration
+- **Фильтрация:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  - по количеству пересадок
 
-- Configure the top-level `parserOptions` property like this:
+  **Изменение валюты платежа:**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+  - возможна оплата в рублях, долларах и евро
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Дополнительные возможности:**
+  - по клику в Header на логотип Idea Platform - попадаем на сайт компании
+  - По клику на имя автора страницы в футере, можно перейти на его личный сайт
+  - Адаптивная верстка обеспечивает удобное использование на различных устройствах.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Технологии и фичи проекта
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# idea_platform_test_grigorash
+- **TypeScript (TS)**
+- **React**
+- **Сборка**: Vite
+- **Стили**: MUI (Material-UI)
+- **Форматирование**: Prettier
+- **Линтинг**: ESLint
+- **Module CSS**
+- **Оптимизация изображений** через [TinyPNG](https://tinypng.com/)
+- **Деплой** на GitHub Pages через настройку GitHub Actions
+
+## Функциональность
+
+1. **Адаптивная верстка**
+
+   - Поддержка экранов с минимальной шириной 320px.
+   - Использование Flexbox, медиа-запросов и других техник для обеспечения отзывчивого дизайна.
+
+2. **Кастомизация**
+
+   - Замена стандартного favicons на фирменный.
+
+3. **API интеграция**
+
+   - Получение актуальных курсов валют по API через кастомный хук `useCurrencyRate`.
+
+4. **Архитектура проекта**
+
+   - Вынесение констант и переиспользуемых типов в отдельные файлы для удобства и чистоты кода.
+
+5. **Управление состоянием**
+
+   - Хранение данных в двух контекстах (`context`) для доступа из разных компонентов.
+   - Использование кастомных хуков `useCurrency` и `useStops` для управления состоянием приложения.
+
+6. **Поддержка IE11**
+   - Реализуется через `core-js`, `regenerator-runtime` и плагин `@vitejs/plugin-legacy`.
+
+---
+
+## Деплой на GH Pages
+
+Проект размещен на GH Pages и доступен по адресу https://otec-s.github.io/idea_platform_test_grigorash/
+Проект автоматически деплоится на GitHub Pages через GitHub Actions при пуше изменений в основную ветку.
