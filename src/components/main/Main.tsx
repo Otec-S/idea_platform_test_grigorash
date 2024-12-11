@@ -6,6 +6,7 @@ import styles from "./Main.module.css";
 import { useStops } from "../../shared/hooks/useStops";
 import { useCurrency } from "../../shared/hooks/useCurrency";
 import { useCurrencyRate } from "../../shared/hooks/useCurrencyRate";
+import { Alert, Box, CircularProgress } from "@mui/material";
 
 export default function Main() {
   const { state } = useStops();
@@ -45,11 +46,15 @@ export default function Main() {
   };
 
   if (currencyLoading) {
-    return <div>Загрузка курсов валют...</div>;
+    return (
+      <Box sx={{ display: "flex" }}>
+        <CircularProgress />
+      </Box>
+    );
   }
 
   if (currencyError) {
-    return <div>Ошибка: {currencyError}</div>;
+    return <Alert severity="error">Ошибка: {currencyError}</Alert>;
   }
 
   return (

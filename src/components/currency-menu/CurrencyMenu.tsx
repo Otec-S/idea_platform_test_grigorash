@@ -18,7 +18,7 @@ export default function StopsMenu({ open, toggleDrawer }: Props) {
   return (
     <>
       <Drawer open={open} anchor="right" onClose={toggleDrawer(false)}>
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex", width: "15rem" }}>
           <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
             <FormLabel id="demo-radio-buttons-group-label">ВАЛЮТА</FormLabel>
             <RadioGroup
