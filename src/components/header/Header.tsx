@@ -48,7 +48,7 @@ function Header() {
   }, [openStopsMenu, openCurrencyMenu]);
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AirplaneTicketOutlinedIcon

@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <Box sx={{ bgcolor: "#cfe8fc" }}>
+      <Box sx={{ bgcolor: "#cfe8fc", padding: "2rem" }}>
         <Header />
         <Main />
       </Box>
