@@ -1,9 +1,3 @@
-.cardInfoWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .logoWrapper {
   height: 5rem;
 }
@@ -18,12 +12,19 @@
   text-align: left;
 }
 
-.time {
-  font-size: xx-large;
+.cardInfoWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media screen and (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.airport {
-  /* style definitions */
+.time {
+  font-size: xx-large;
 }
 
 .date {
@@ -37,6 +38,12 @@
   flex-direction: row;
   justify-content: space-around;
   opacity: 0.5;
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .arrow {

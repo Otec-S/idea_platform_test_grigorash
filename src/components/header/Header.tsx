@@ -55,6 +55,7 @@ function Header() {
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
           />
           <Typography
+            // className={styles.title}
             variant="h6"
             noWrap
             component="a"
@@ -111,6 +112,7 @@ function Header() {
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
           />
           <Typography
+            // className={styles.title}
             variant="h5"
             noWrap
             component="a"
@@ -121,7 +123,8 @@ function Header() {
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontSize: ".75rem",
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
             }}
